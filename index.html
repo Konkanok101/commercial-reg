@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGCOM :: Infomation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* กล่องครอบดีไซน์ให้ขยายตามคอม และหดพอดีมือถือ */
+        .container {
+            width: 100%;
+            max-width: 650px; /* ขนาดพอดีสายตาบนหน้าจอคอม */
+            padding: 10px;
+        }
+
+        /* ส่วนหัวสีม่วงตามใบทะเบียนจริง */
+        .header {
+            text-align: center;
+            color: #4A00E0; 
+            font-weight: bold;
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        .header .location {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .header .sub-title {
+            font-size: 1.05rem;
+        }
+
+        /* ใช้ Flexbox จัดข้อมูล เพื่อให้รองรับมือถือ (Responsive) */
+        .info-row {
+            display: flex;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            align-items: flex-start;
+        }
+
+        /* หัวข้อฝั่งซ้าย */
+        .label {
+            width: 40%;
+            text-align: right;
+            font-weight: bold;
+            color: #444444;
+            padding-right: 15px;
+            position: relative;
+            flex-shrink: 0; /* ไม่ให้หัวข้อย่อส่วนจนบดบังตัวหนังสือ */
+        }
+
+        /* ใส่เครื่องหมาย : ด้านหลังหัวข้อ */
+        .label::after {
+            content: " :";
+            position: absolute;
+            right: 5px;
+        }
+
+        /* ข้อมูลฝั่งขวา */
+        .value {
+            width: 60%;
+            text-align: left;
+            color: #111111;
+            word-break: break-word; /* ป้องกันข้อความล้นขอบจอ */
+        }
+
+        /* แท็บพิเศษสำหรับหน้าจอมือถือที่เล็กกว่า 500px */
+        @media (max-width: 500px) {
+            body {
+                padding: 15px 10px;
+            }
+            .header .location { font-size: 1.1rem; }
+            .header .sub-title { font-size: 0.95rem; }
+            
+            /* เปลี่ยนจากซ้าย-ขวา เป็น บน-ล่าง บนหน้าจอมือถือเพื่อให้เปิดอ่านง่าย */
+            .info-row {
+                flex-direction: column;
+                margin-bottom: 16px;
+                border-bottom: 1px dashed #eee; /* เพิ่มเส้นคั่นจางๆ ให้ดูง่ายบนมือถือ */
+                padding-bottom: 8px;
+            }
+            .label {
+                width: 100%;
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 3px;
+            }
+            .label::after {
+                content: ""; /* เอาเครื่องหมาย : ออกเมื่ออยู่บนมือถือแนวตั้ง */
+            }
+            .value {
+                width: 100%;
+                padding-left: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="location">เขตทุ่งครุ</div>
+        <div class="sub-title">ระบบจดทะเบียนพาณิชย์ (ตรวจสอบข้อมูล QR CODE)</div>
+        <div class="sub-title">ข้อมูลทะเบียนพาณิชย์</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">ทะเบียนเลขที่</div>
+        <div class="value">3760100689246</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">เลขคำขอจัดตั้งเลขที่</div>
+        <div class="value">1004967000059</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">คำขอเปลี่ยนแปลงเลขที่</div>
+        <div class="value">1004967000059</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">ชื่อผู้ประกอบพาณิชยกิจ</div>
+        <div class="value">นางสาว นันทยา แก้วสะอาด</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">จดทะเบียน เมื่อวันที่</div>
+        <div class="value">19 เมษายน พ.ศ.2567</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">ชื่อพาณิชยกิจ</div>
+        <div class="value">บอมอล คาเฟ่</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">ชนิดแห่งพาณิชยกิจ</div>
+        <div class="value">ประกอบกิจการร้านกาแฟ คาเฟ่ ร้านอาหารและเครื่องดื่ม,จำหน่ายกาแฟ ชานม น้ำผลไม้ เครื่องดื่มทุกชนิด รวมถึงอาหาร ขนมหวาน เบเกอรี่ เค้ก บิงซู ไอศกรีม และของทานเล่น,ผลิต รับจ้างผลิต สั่งทำ จำหน่าย ปลีก-ส่ง อาหาร เครื่องดื่ม ขนม เบเกอรี่ และผลิตภัณฑ์ที่เกี่ยวข้อง,ให้บริการรับประทานอาหารและเครื่องดื่มภายในร้าน ซื้อกลับบ้าน จัดส่งเดลิเวอรี่ และจำหน่ายผ่านช่องทางออนไลน์</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">ที่ตั้งสำนักงานใหญ่</div>
+        <div class="value">เลขที่ 620 10 ถนน ประชาอุทิศ แขวงทุ่งครุ เขตทุ่งครุ กรุงเทพมหานคร 10140</div>
+    </div>
+
+    <div class="info-row">
+        <div class="label">นายทะเบียนพาณิชย์</div>
+        <div class="value">นายนิพนธ์ สนธิ</div>
+    </div>
+</div>
+
+</body>
+</html>
