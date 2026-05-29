@@ -2,14 +2,14 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=600, initial-scale=0.62, maximum-scale=2.0, user-scalable=yes">
+    <meta name="viewport" content="width=600, initial-scale=1.0">
     <title>REGCOM :: Infomation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
         
         * {
             box-sizing: border-box;
-            -webkit-text-size-adjust: none;
+            -webkit-text-size-adjust: none; /* ป้องกัน iOS แอบขยายตัวหนังสือจนล้น */
         }
 
         body {
@@ -17,17 +17,21 @@
             background-color: #ffffff;
             color: #222222;
             margin: 0;
-            padding: 35px 25px;
+            padding: 0;
             display: flex;
             justify-content: center;
+            align-items: flex-start;
         }
 
+        /* กล่องเอกสารหลัก ล็อกความกว้างหน้ากระดาษตามฟอร์มรัฐบาลจริง */
         .container {
-            width: 540px; /* ขนาดหน้ากระดาษเทียบเท่าภาพต้นฉบับ */
+            width: 580px; 
+            padding: 25px 20px;
             margin: 0 auto;
+            transform-origin: top center;
         }
 
-        /* ส่วนหัวข้อปรับระยะห่างและขนาดอักษรตามฟอร์มจริง */
+        /* ส่วนหัวข้อสีม่วง ระยะและขนาดถอดจากต้นฉบับ */
         .header {
             text-align: center;
             color: #4A00E0; 
@@ -37,7 +41,7 @@
         }
 
         .header .location {
-            font-size: 18px;
+            font-size: 18.5px;
         }
 
         .header .sub-title {
@@ -48,19 +52,20 @@
         .info-table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed; /* ล็อกความกว้างคอลัมน์ไม่ให้ขยับเบี้ยว */
         }
 
         .info-table td {
             padding: 9px 0;
             vertical-align: top;
             font-size: 16px;
-            line-height: 1.62;
+            line-height: 1.65;
         }
 
-        /* จัดข้อความฝั่งซ้ายให้ชิดขวา และเว้นระยะก่อนถึงเครื่องหมาย : ให้เหมือนต้นฉบับ */
+        /* ข้อความฝั่งซ้าย: ชิดขวา ขนาดกว้างตายตัว เพื่อให้เครื่องหมาย : เรียงตรงกัน */
         .label {
             text-align: right;
-            width: 205px; 
+            width: 220px; 
             font-weight: bold;
             color: #333333;
             padding-right: 4px !important;
@@ -71,19 +76,36 @@
             content: " :";
         }
 
-        /* จัดข้อความฝั่งขวา ให้มีระยะห่างย่อหน้าเล็กน้อยหลังจากเครื่องหมาย : */
+        /* ข้อความฝั่งขวา: จัดการตัดคำอัจฉริยะ ไม่ให้ข้อความดันทะลุขอบจอ */
         .value {
             text-align: left;
             color: #111111;
-            padding-left: 20px; /* เพิ่มระยะเยื้องฝั่งขวาให้สวยงามตามต้นฉบับ */
+            padding-left: 20px;
             word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
         }
 
-        /* ป้องกันไม่ให้แอปพลิเคชันหรือมือถือแปลงตัวเลขเป็นลิงก์ขีดเส้นใต้ */
+        /* ล้างค่าเอฟเฟกต์เบอร์โทรศัพท์/ตัวเลขลิงก์สีน้ำเงินในมือถือ */
         .value, .value * {
             color: #111111 !important;
             text-decoration: none !important;
             background: none !important;
+        }
+
+        /* โค้ดพิเศษ: สั่งการย่อขนาดแบบอัตโนมัติเมื่อเปิดบนมือถือ (หน้าจอเล็กกว่า 600px) */
+        @media screen and (max-width: 600px) {
+            body {
+                align-items: center;
+                overflow-x: hidden; /* ป้องกันหน้าจอเลื่อนซ้ายขวา */
+            }
+            .container {
+                /* คำนวณการย่อขนาดเปอร์เซ็นต์หน้าจอให้พอดีกับมือถือทุกรุ่นโดยอัตโนมัติ */
+                transform: scale(calc(window.innerWidth / 600));
+                zoom: calc(screen.width / 600);
+                width: 580px;
+                padding: 20px 10px;
+            }
         }
     </style>
 </head>
