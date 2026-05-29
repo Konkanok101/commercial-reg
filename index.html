@@ -9,26 +9,25 @@
         
         * {
             box-sizing: border-box;
-            -webkit-text-size-adjust: 100%;
         }
 
         body {
             font-family: 'Sarabun', sans-serif;
             background-color: #ffffff;
-            color: #222222;
+            color: #333333;
             margin: 0;
-            padding: 20px 15px;
+            padding: 20px 10px;
             display: flex;
             justify-content: center;
         }
 
         .container {
             width: 100%;
-            max-width: 600px; /* ขนาดพอดีสายตาในจอคอม */
-            margin: 0 auto;
+            max-width: 600px; /* ขนาดหน้ากระดาษพอดีสายตา */
+            padding: 5px;
         }
 
-        /* ส่วนหัวข้อสีม่วง */
+        /* ส่วนหัวข้อสีม่วงตามใบจริง */
         .header {
             text-align: center;
             color: #4A00E0; 
@@ -38,84 +37,63 @@
         }
 
         .header .location {
-            font-size: 19px;
+            font-size: 18px;
         }
 
         .header .sub-title {
-            font-size: 16px;
-            margin-top: 5px;
+            font-size: 15px;
+            margin-top: 4px;
         }
 
-        /* ใช้ Flexbox จัดแถวแทนตารางแบบเก่า เพื่อให้ยืดหยุ่นตามหน้าจอ */
-        .info-row {
-            display: flex;
-            padding: 10px 0;
-            font-size: 16px;
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            padding: 9px 0;
+            vertical-align: top;
+            font-size: 15px; /* ขนาดตัวหนังสือมาตรฐาน อ่านง่ายทั้งคอมและมือถือ */
             line-height: 1.6;
-            align-items: flex-start;
         }
 
-        /* ข้อความฝั่งซ้าย (คอมพิวเตอร์) */
+        /* ฝั่งซ้าย: จัดชิดขวา และล็อกความกว้างพอดีคำ ไม่ให้ตกบรรทัด */
         .label {
             text-align: right;
-            width: 40%; 
+            width: 155px; /* ปรับขนาดให้กระชับขึ้นเพื่อเหลือพื้นที่ให้ฝั่งขวาบนมือถือ */
             font-weight: bold;
             color: #333333;
-            padding-right: 15px;
-            white-space: nowrap;
+            padding-right: 15px !important;
+            white-space: nowrap; 
         }
 
         .label::after {
             content: " :";
         }
 
-        /* ข้อความฝั่งขวา (คอมพิวเตอร์) */
+        /* ฝั่งขวา: จัดชิดซ้าย และตั้งค่าให้ตัดคำขึ้นบรรทัดใหม่เมื่อหมดพื้นที่จอ */
         .value {
             text-align: left;
-            width: 60%;
             color: #111111;
             padding-left: 5px;
-            word-wrap: break-word;
+            word-break: break-word; /* สั่งให้ตัดคำขึ้นบรรทัดใหม่อัตโนมัติเมื่อชนขอบจอมือถือ */
+            overflow-wrap: break-word;
         }
 
-        /* ป้องกันมือถือแอบเปลี่ยนตัวเลขเป็นลิงก์สีน้ำเงินขีดเส้นใต้ */
+        /* ล้างค่าเอฟเฟกต์ลิงก์สีน้ำเงินขีดเส้นใต้ของมือถือ */
         .value, .value * {
             color: #111111 !important;
             text-decoration: none !important;
         }
 
-        /* =================================================== */
-        /* โค้ดพิเศษปรับปรุงหน้าจอสำหรับโทรศัพท์มือถือ (หน้าจอเล็กกว่า 600px) */
-        /* =================================================== */
-        @media screen and (max-width: 600px) {
-            body {
-                padding: 15px 10px;
-            }
-            .header .location {
-                font-size: 17px;
-            }
-            .header .sub-title {
-                font-size: 14px;
-            }
-            .info-row {
-                flex-direction: column; /* เปลี่ยนจาก ซ้าย-ขวา เป็น บน-ล่าง เพื่อไม่ให้ตัวหนังสือหดตัวเล็กลง */
-                padding: 8px 0;
-                border-bottom: 1px solid #f2f2f2; /* เพิ่มเส้นคั่นจางๆ ให้ดูเป็นระเบียบแยกฝั่งชัดเจน */
+        /* ปรับแต่งเล็กน้อยเมื่ออยู่บนหน้าจอมือถือที่แคบมากๆ */
+        @media screen and (max-width: 400px) {
+            .info-table td {
+                font-size: 14.5px; /* ลดขนาดลงจืดเดียวเพื่อให้ข้อความยาวๆ แสดงผลได้สวยงาม */
             }
             .label {
-                width: 100%;
-                text-align: left; /* เปลี่ยนหัวข้อมาอยู่ฝั่งซ้ายของจอ */
-                padding-right: 0;
-                margin-bottom: 4px;
-                font-size: 15px;
-            }
-            .label::after {
-                content: ""; /* ซ่อนเครื่องหมาย : ออกเพื่อความสวยงามบนมือถือ */
-            }
-            .value {
-                width: 100%;
-                padding-left: 0;
-                font-size: 15px; /* ขนาดตัวหนังสือใหญ่พอดีอ่านง่าย ไม่ต้องเพ่ง */
+                width: 140px;
+                padding-right: 10px !important;
             }
         }
     </style>
@@ -129,42 +107,44 @@
         <div class="sub-title">ข้อมูลทะเบียนพาณิชย์</div>
     </div>
 
-    <div class="info-row">
-        <div class="label">ทะเบียนเลขที่</div>
-        <div class="value">3760100689246</div>
-    </div>
-    <div class="info-row">
-        <div class="label">เลขคำขอจัดตั้งเลขที่</div>
-        <div class="value">1004967000059</div>
-    </div>
-    <div class="info-row">
-        <div class="label">คำขอเปลี่ยนแปลงเลขที่</div>
-        <div class="value">1004967000059</div>
-    </div>
-    <div class="info-row">
-        <div class="label">ชื่อผู้ประกอบพาณิชยกิจ</div>
-        <div class="value">นางสาว นันทยา แก้วสะอาด</div>
-    </div>
-    <div class="info-row">
-        <div class="label">จดทะเบียน เมื่อวันที่</div>
-        <div class="value">19 เมษายน พ.ศ.2567</div>
-    </div>
-    <div class="info-row">
-        <div class="label">ชื่อพาณิชยกิจ</div>
-        <div class="value">บอมอล คาเฟ่</div>
-    </div>
-    <div class="info-row">
-        <div class="label">ชนิดแห่งพาณิชยกิจ</div>
-        <div class="value">ประกอบกิจการร้านกาแฟ คาเฟ่ ร้านอาหารและเครื่องดื่ม,จำหน่ายกาแฟ ชานม น้ำผลไม้ เครื่องดื่มทุกชนิด รวมถึงอาหาร ขนมหวาน เบเกอรี่ เค้ก บิงซู ไอศกรีม และของทานเล่น,ผลิต รับจ้างผลิต สั่งทำ จำหน่าย ปลีก-ส่ง อาหาร เครื่องดื่ม ขนม เบเกอรี่ และผลิตภัณฑ์ที่เกี่ยวข้อง,ให้บริการรับประทานอาหารและเครื่องดื่มภายในร้าน ซื้อกลับบ้าน จัดส่งเดลิเวอรี่ และจำหน่ายผ่านช่องทางออนไลน์</div>
-    </div>
-    <div class="info-row">
-        <div class="label">ที่ตั้งสำนักงานใหญ่</div>
-        <div class="value">เลขที่ 620 10 ถนน ประชาอุทิศ แขวงทุ่งครุ เขตทุ่งครุ กรุงเทพมหานคร 10140</div>
-    </div>
-    <div class="info-row">
-        <div class="label">นายทะเบียนพาณิชย์</div>
-        <div class="value">นายนิพนธ์ สนธิ</div>
-    </div>
+    <table class="info-table">
+        <tr>
+            <td class="label">ทะเบียนเลขที่</td>
+            <td class="value">3760100689246</td>
+        </tr>
+        <tr>
+            <td class="label">เลขคำขอจัดตั้งเลขที่</td>
+            <td class="value">1004967000059</td>
+        </tr>
+        <tr>
+            <td class="label">คำขอเปลี่ยนแปลงเลขที่</td>
+            <td class="value">1004967000059</td>
+        </tr>
+        <tr>
+            <td class="label">ชื่อผู้ประกอบพาณิชยกิจ</td>
+            <td class="value">นางสาว นันทยา แก้วสะอาด</td>
+        </tr>
+        <tr>
+            <td class="label">จดทะเบียน เมื่อวันที่</td>
+            <td class="value">19 เมษายน พ.ศ.2567</td>
+        </tr>
+        <tr>
+            <td class="label">ชื่อพาณิชยกิจ</td>
+            <td class="value">บอมอล คาเฟ่</td>
+        </tr>
+        <tr>
+            <td class="label">ชนิดแห่งพาณิชยกิจ</td>
+            <td class="value">ประกอบกิจการร้านกาแฟ คาเฟ่ ร้านอาหารและเครื่องดื่ม,จำหน่ายกาแฟ ชานม น้ำผลไม้ เครื่องดื่มทุกชนิด รวมถึงอาหาร ขนมหวาน เบเกอรี่ เค้ก Bingsu ไอศกรีม และของทานเล่น,ผลิต รับจ้างผลิต สั่งทำ จำหน่าย ปลีก-ส่ง อาหาร เครื่องดื่ม ขนม เบเกอรี่ และผลิตภัณฑ์ที่เกี่ยวข้อง,ให้บริการรับประทานอาหารและเครื่องดื่มภายในร้าน ซื้อกลับบ้าน จัดส่งเดลิเวอรี่ และจำหน่ายผ่านช่องทางออนไลน์</td>
+        </tr>
+        <tr>
+            <td class="label">ที่ตั้งสำนักงานใหญ่</td>
+            <td class="value">เลขที่ 620 10 ถนน ประชาอุทิศ แขวงทุ่งครุ เขตทุ่งครุ กรุงเทพมหานคร 10140</td>
+        </tr>
+        <tr>
+            <td class="label">นายทะเบียนพาณิชย์</td>
+            <td class="value">นายนิพนธ์ สนธิ</td>
+        </tr>
+    </table>
 </div>
 
 </body>
