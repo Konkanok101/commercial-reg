@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=1024">
     <title>REGCOM :: Infomation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
@@ -14,72 +14,77 @@
         body {
             font-family: 'Sarabun', sans-serif;
             background-color: #ffffff;
-            color: #111111;
+            color: #333333;
             margin: 0;
-            padding: 10px;
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
-            -webkit-text-size-adjust: 100%; /* ป้องกัน iOS ขยายตัวหนังสือเอง */
         }
 
+        /* ล็อคขนาดกล่องข้อความให้เท่ากับต้นฉบับ เพื่อไม่ให้จอมือถือบีบจนตัวหนังสือเพี้ยน */
         .container {
-            width: 100%;
-            max-width: 550px;
-            padding: 5px;
+            width: 620px;
+            padding: 10px;
         }
 
-        /* ส่วนหัวข้อปรับขนาดให้เล็กลงพอดีจอ */
+        /* ส่วนหัวข้อสีม่วง ขนาดและระยะห่างตามรูปต้นฉบับ */
         .header {
             text-align: center;
             color: #4A00E0; 
             font-weight: bold;
-            margin-top: 15px;
-            margin-bottom: 25px;
-            line-height: 1.5;
+            margin-bottom: 50px;
+            line-height: 1.8;
         }
 
         .header .location {
-            font-size: 15px;
+            font-size: 21px;
+            letter-spacing: 0.5px;
         }
 
         .header .sub-title {
-            font-size: 13px;
+            font-size: 18px;
+            letter-spacing: 0.3px;
+            margin-top: 5px;
         }
 
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed; /* บังคับควบคุมความกว้างคอลัมน์ */
         }
 
         .info-table td {
-            padding: 7px 2px;
+            padding: 11px 0;
             vertical-align: top;
-            font-size: 14px; /* ปรับลดขนาดตัวหนังสือตรงนี้ให้เล็กลงเพื่อพอดีจอมือถือ */
-            line-height: 1.5;
+            font-size: 17.5px;
+            line-height: 1.6;
         }
 
-        /* หัวข้อฝั่งซ้าย (ปรับขนาดกว้างให้พอดี ไม่เบียดข้อความ) */
+        /* ข้อความฝั่งซ้าย: ชิดขวา หนา และเว้นระยะห่างก่อนถึงเครื่องหมาย : */
         .label {
             text-align: right;
-            width: 38%; 
+            width: 255px; 
             font-weight: bold;
             color: #333333;
-            padding-right: 12px !important;
-            white-space: nowrap; /* ห้ามหัวข้อตัดขึ้นบรรทัดใหม่ */
+            padding-right: 25px !important;
+            white-space: nowrap;
         }
 
         .label::after {
             content: " :";
         }
 
-        /* ข้อมูลฝั่งขวา */
+        /* ข้อความฝั่งขวา: ชิดซ้าย ตัวธรรมดา สีเข้มขึ้น */
         .value {
             text-align: left;
-            width: 62%;
-            color: #000000;
-            word-wrap: break-word;
-            word-break: break-all;
+            color: #111111;
+            padding-left: 5px;
+        }
+
+        /* ป้องกันไม่ให้เบราว์เซอร์ในมือถือแปลงตัวเลขเป็นลิงก์สีน้ำเงิน */
+        .value a, .value {
+            text-decoration: none !important;
+            color: #111111 !important;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -119,7 +124,7 @@
         </tr>
         <tr>
             <td class="label">ชนิดแห่งพาณิชยกิจ</td>
-            <td class="value">ประกอบกิจการร้านกาแฟ คาเฟ่ ร้านอาหารและเครื่องดื่ม,จำหน่ายกาแฟ ชานม น้ำผลไม้ เครื่องดื่มทุกชนิด รวมถึงอาหาร ขนมหวาน เบเกอรี่ เค้ก บิงซู ไอศกรีม และของทานเล่น,ผลิต รับจ้างผลิต สั่งทำ จำหน่าย ปลีก-ส่ง อาหาร เครื่องดื่ม ขนม เบเกอรี่ และผลิตภัณฑ์ที่เกี่ยวข้อง,ให้บริการรับประทานอาหารและเครื่องดื่มภายในร้าน ซื้อกลับบ้าน จัดส่งเดลิเวอรี่ และจำหน่ายผ่านช่องทางออนไลน์</td>
+            <td class="value">ประกอบกิจการร้านกาแฟ คาเฟ่ ร้านอาหารและเครื่องดื่ม,จำหน่ายกาแฟ ชานม น้ำผลไม้ เครื่องดื่มทุกชนิด รวมถึงอาหาร ขนมหวาน เบเกอรี่ เค้ก บิงซู ไอศกรีม และของทานเล่น,ผลิต รับจ้างผลิต สั่งทำ จำหน่าย ปลีก-ส่ง อาหัส เครื่องดื่ม ขนม เบเกอรี่ และผลิตภัณฑ์ที่เกี่ยวข้อง,ให้บริการรับประทานอาหารและเครื่องดื่มภายในร้าน ซื้อกลับบ้าน จัดส่งเดลิเวอรี่ และจำหน่ายผ่านช่องทางออนไลน์</td>
         </tr>
         <tr>
             <td class="label">ที่ตั้งสำนักงานใหญ่</td>
