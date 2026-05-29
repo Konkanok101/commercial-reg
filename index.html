@@ -2,72 +2,84 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>REGCOM :: Infomation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
         
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Sarabun', sans-serif;
             background-color: #ffffff;
-            color: #333333;
+            color: #111111;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             display: flex;
             justify-content: center;
+            -webkit-text-size-adjust: 100%; /* ป้องกัน iOS ขยายตัวหนังสือเอง */
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
-            padding: 10px;
-            box-sizing: border-box;
+            max-width: 550px;
+            padding: 5px;
         }
 
+        /* ส่วนหัวข้อปรับขนาดให้เล็กลงพอดีจอ */
         .header {
             text-align: center;
-            color: #4A00E0; /* สีม่วงตามภาพหลัก */
+            color: #4A00E0; 
             font-weight: bold;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
 
         .header .location {
-            font-size: 18px;
+            font-size: 15px;
         }
 
         .header .sub-title {
-            font-size: 16px;
+            font-size: 13px;
         }
 
         .info-table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed; /* บังคับควบคุมความกว้างคอลัมน์ */
         }
 
         .info-table td {
-            padding: 8px 4px;
+            padding: 7px 2px;
             vertical-align: top;
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 12.5px; /* ปรับลดขนาดตัวหนังสือตรงนี้ให้เล็กลงเพื่อพอดีจอมือถือ */
+            line-height: 1.5;
         }
 
+        /* หัวข้อฝั่งซ้าย (ปรับขนาดกว้างให้พอดี ไม่เบียดข้อความ) */
         .label {
             text-align: right;
-            width: 40%;
+            width: 38%; 
             font-weight: bold;
-            color: #444444;
-            padding-right: 15px !important;
+            color: #333333;
+            padding-right: 12px !important;
+            white-space: nowrap; /* ห้ามหัวข้อตัดขึ้นบรรทัดใหม่ */
         }
 
         .label::after {
             content: " :";
         }
 
+        /* ข้อมูลฝั่งขวา */
         .value {
             text-align: left;
-            width: 60%;
-            color: #111111;
+            width: 62%;
+            color: #000000;
+            word-wrap: break-word;
+            word-break: break-all;
         }
     </style>
 </head>
