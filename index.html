@@ -2,14 +2,14 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=600, initial-scale=0.6, maximum-scale=2.0, user-scalable=yes">
+    <meta name="viewport" content="width=600, initial-scale=0.62, maximum-scale=2.0, user-scalable=yes">
     <title>REGCOM :: Infomation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
         
         * {
             box-sizing: border-box;
-            -webkit-text-size-adjust: none; /* ป้องกันมือถือแอบขยายตัวอักษรเอง */
+            -webkit-text-size-adjust: none;
         }
 
         body {
@@ -17,33 +17,32 @@
             background-color: #ffffff;
             color: #222222;
             margin: 0;
-            padding: 30px 10px;
+            padding: 35px 25px;
             display: flex;
             justify-content: center;
         }
 
         .container {
-            width: 100%;
-            max-width: 540px; /* ล็อกความกว้างหน้าเอกสารให้พอดีเท่าต้นฉบับ */
+            width: 540px; /* ขนาดหน้ากระดาษเทียบเท่าภาพต้นฉบับ */
             margin: 0 auto;
         }
 
-        /* ส่วนหัวข้อสีม่วง ระยะเว้นบรรทัดและขนาดถอดจากต้นฉบับ */
+        /* ส่วนหัวข้อปรับระยะห่างและขนาดอักษรตามฟอร์มจริง */
         .header {
             text-align: center;
             color: #4A00E0; 
             font-weight: bold;
             margin-bottom: 45px;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .header .location {
-            font-size: 19px;
+            font-size: 18px;
         }
 
         .header .sub-title {
-            font-size: 16px;
-            margin-top: 4px;
+            font-size: 15.5px;
+            margin-top: 5px;
         }
 
         .info-table {
@@ -52,19 +51,19 @@
         }
 
         .info-table td {
-            padding: 10px 0;
+            padding: 9px 0;
             vertical-align: top;
-            font-size: 16.5px;
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.62;
         }
 
-        /* คอลัมน์ซ้าย: จัดชิดขวา กว้างพอดีคำ ไม่ตัดขึ้นบรรทัดใหม่ */
+        /* จัดข้อความฝั่งซ้ายให้ชิดขวา และเว้นระยะก่อนถึงเครื่องหมาย : ให้เหมือนต้นฉบับ */
         .label {
             text-align: right;
-            width: 215px; 
+            width: 205px; 
             font-weight: bold;
             color: #333333;
-            padding-right: 18px !important;
+            padding-right: 4px !important;
             white-space: nowrap;
         }
 
@@ -72,15 +71,15 @@
             content: " :";
         }
 
-        /* คอลัมน์ขวา: ตัวธรรมดา เคลียร์เอฟเฟกต์ลิงก์โทรศัพท์ทั้งหมด */
+        /* จัดข้อความฝั่งขวา ให้มีระยะห่างย่อหน้าเล็กน้อยหลังจากเครื่องหมาย : */
         .value {
             text-align: left;
             color: #111111;
-            padding-left: 10px;
+            padding-left: 20px; /* เพิ่มระยะเยื้องฝั่งขวาให้สวยงามตามต้นฉบับ */
             word-wrap: break-word;
         }
 
-        /* ล็อกไม่ให้สมาร์ตโฟนไฮไลท์ตัวเลขเป็นลิงก์สีน้ำเงินขีดเส้นใต้ */
+        /* ป้องกันไม่ให้แอปพลิเคชันหรือมือถือแปลงตัวเลขเป็นลิงก์ขีดเส้นใต้ */
         .value, .value * {
             color: #111111 !important;
             text-decoration: none !important;
